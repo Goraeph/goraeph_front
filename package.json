@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@react-icons/all-files": "^4.1.0",
     "@tanstack/react-query": "^5.7.2",
     "axios": "^1.6.0",
     "d3": "^7.8.5",
@@ -22,8 +23,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-file-drop": "^3.1.6",
-    "react-force-graph-2d": "^1.25.2",
-    "react-icons": "^4.11.0"
+    "react-force-graph-2d": "^1.25.2"
   },
   "devDependencies": {
     "@types/node": "^20",
