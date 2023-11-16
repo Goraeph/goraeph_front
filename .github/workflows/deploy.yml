@@ -16,7 +16,7 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             cd ~/goraeph_deploy/goraeph_front
-            sudo git config --global --add safe.directory /home/***/goraeph_deploy/devops-tutorial-frontend
+            sudo git config --global --add safe.directory /home/***/goraeph_deploy/goraeph_front
             sudo git pull
             docker-compose build
             docker-compose up -d
