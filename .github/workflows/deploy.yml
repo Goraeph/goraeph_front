@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
-      - name: execute remote ssh & deploy backend server
+      - name: execute remote ssh & deploy frontend server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_SSH_HOST }}
@@ -15,7 +15,7 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
-            cd ~/goraeph_deploy/devops-tutorial-frontend
+            cd ~/goraeph_deploy/goraeph_front
             sudo git config --global --add safe.directory /home/***/goraeph_deploy/devops-tutorial-frontend
             sudo git pull
             docker-compose build
