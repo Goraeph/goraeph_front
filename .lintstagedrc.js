@@ -1,9 +1,10 @@
+const path = require('path');
+
+const buildEslintCommand = filenames =>
+  `next lint --fix --file ${filenames
+    .map(f => path.relative(process.cwd(), f))
+    .join(' --file ')}`;
+
 module.exports = {
-  '**/*.(ts|tsx)': () => 'npx tsc --noEmit',
-  '**/*.(ts|tsx)': filenames => {
-    return [
-      `npx eslint --fix ${filenames.join(' ')}`,
-      `npx prettier --write ${filenames.join(' ')}`,
-    ];
-  },
+  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
 };

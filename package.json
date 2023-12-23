@@ -9,6 +9,12 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
