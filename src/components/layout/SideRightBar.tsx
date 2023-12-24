@@ -2,19 +2,36 @@ import styled from '@emotion/styled';
 import { FaSearch } from '@react-icons/all-files/fa/FaSearch';
 import { MdNotificationsNone } from '@react-icons/all-files/md/MdNotificationsNone';
 import Image from 'next/image';
+import { useState } from 'react';
 
 import { Users } from '@/data/data';
 const SideRightBar = () => {
+  const [active, setActive] = useState(false);
   return (
     <Contain>
       <User>
-        <MdNotificationsNone size={25} />
-        <Image
-          src={Users[0].profileImage}
-          alt="이미지"
-          width={40}
-          height={40}
-        />
+        {active ? (
+          <>
+            <MdNotificationsNone size={25} />
+            <Image
+              src={Users[0].profileImage}
+              alt="이미지"
+              width={40}
+              height={40}
+            />
+          </>
+        ) : (
+          <>
+            <button
+              onClick={() => {
+                setActive(true);
+              }}
+            >
+              로그인
+            </button>
+            <button>회원가입</button>
+          </>
+        )}
       </User>
 
       <SubscribeSearch>
@@ -56,6 +73,16 @@ const User = styled.div`
   align-items: center;
   img {
     border-radius: 50%;
+  }
+  button {
+    background: none;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  button:nth-child(1) {
+    border: none;
   }
 `;
 const SubscribeSearch = styled.div`
