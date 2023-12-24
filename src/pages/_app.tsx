@@ -4,8 +4,10 @@ import styled from '@emotion/styled';
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 
+import SideRightBar from '@/components/layout/SideRightBar';
+
 const SideLeftBar = dynamic(
-  () => import('@/components/SideLeftBar').then(mod => mod.default),
+  () => import('@/components/layout/SideLeftBar').then(mod => mod.default),
   { ssr: false }
 );
 
@@ -15,7 +17,12 @@ export default function App({ Component, pageProps }: AppProps) {
       <LayoutInner>
         <LayoutContainer>
           <SideLeftBar />
-          <Component {...pageProps} />
+
+          <ContentContainer>
+            <Component {...pageProps} />
+          </ContentContainer>
+
+          <SideRightBar />
         </LayoutContainer>
       </LayoutInner>
     </MainLayout>
@@ -38,6 +45,14 @@ const LayoutInner = styled.div`
   margin: 0 auto;
 `;
 const LayoutContainer = styled.div`
-  display: flex;
-  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  height: 100vh;
+`;
+const ContentContainer = styled.div`
+  grid-column: span 6;
+  width: 100%;
+  border: 1px solid red;
+  min-width: 15rem;
 `;
