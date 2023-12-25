@@ -53,6 +53,18 @@ const LayoutContainer = styled.div`
 const ContentContainer = styled.div`
   grid-column: span 6;
   width: 100%;
-  border: 1px solid red;
   min-width: 15rem;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    background-color: #f1f1f1 !important;
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888 !important;
+    border-radius: 5px !important;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #555 !important;
+  }
 `;
