@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HiHashtag } from '@react-icons/all-files/hi/HiHashtag';
 import { IoSettingsSharp } from '@react-icons/all-files/io5/IoSettingsSharp';
 import { MdKeyboardArrowDown } from '@react-icons/all-files/md/MdKeyboardArrowDown';
 import { useState } from 'react';
 
-import { Note, Tags } from '../../data/data';
+import { Tags } from '../../data/data';
+import NoteTitle from './SideLeftBar/NoteTitle';
 
 const SideLeftBar = () => {
   const [toggle, setToggle] = useState([0]);
@@ -38,16 +38,7 @@ const SideLeftBar = () => {
             >
               {item.name} <MdKeyboardArrowDown color="#A6A6A6" />
             </div>
-            {Note.map((note, index: number) => {
-              if (item.id === note.id) {
-                return (
-                  <span key={index}>
-                    <HiHashtag />
-                    {note.title}
-                  </span>
-                );
-              }
-            })}
+            <NoteTitle id={item.id} />
           </Section>
         ))}
       </Contents>
@@ -63,10 +54,10 @@ const SideLeftBar = () => {
 export default SideLeftBar;
 
 const Contain = styled.div`
-  padding: 20px;
+  width: 250px;
   min-width: 2rem;
+  padding: 20px;
   background: #ffffff;
-
   h2 {
     color: #979797;
   }
