@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import { Users } from '@/data/data';
+
+import SpaceName from '../note/header/SpaceName';
 const SideRightBar = () => {
   const [active, setActive] = useState(false);
   return (
@@ -51,7 +53,7 @@ const SideRightBar = () => {
                 width={40}
                 height={40}
               />
-              Some Space
+              <SpaceName id={''} />
               {item.isActive && <span></span>}
             </div>
           ))}
@@ -63,8 +65,9 @@ const SideRightBar = () => {
 
 export default SideRightBar;
 const Contain = styled.div`
-  padding: 20px;
+  width: 250px;
   min-width: 2rem;
+  padding: 20px;
   background: #ffffff;
 `;
 const User = styled.div`
@@ -77,8 +80,8 @@ const User = styled.div`
   button {
     background: none;
     border: 1px solid black;
-    border-radius: 15px;
-    padding: 10px 15px;
+    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
   }
   button:nth-child(1) {
@@ -104,7 +107,7 @@ const SubscribeSearch = styled.div`
     position: absolute;
     left: 0;
     margin-left: 15px;
-    font-size: 0.75em;
+    font-size: 0.5em;
     letter-spacing: 0.1em;
     pointer-events: none;
     transition: 0.3s all;
@@ -123,7 +126,7 @@ const Contents = styled.div`
   margin-top: 50px;
 `;
 const ContentsTitle = styled.span`
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #979797;
   margin-top: 30px;
 `;
