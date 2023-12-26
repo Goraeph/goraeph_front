@@ -32,7 +32,7 @@ const Contain = styled.div`
   cursor: pointer;
   margin-top: 20px;
   width: 100%;
-  min-width: 700px;
+  max-width: 800px;
   border-radius: 20px;
   padding: 30px;
   box-shadow:
