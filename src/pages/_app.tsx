@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 
+import { ChakraProvider } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
@@ -13,19 +14,21 @@ const SideLeftBar = dynamic(
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <MainLayout>
-      <LayoutInner>
-        <LayoutContainer>
-          <SideLeftBar />
+    <ChakraProvider>
+      <MainLayout>
+        <LayoutInner>
+          <LayoutContainer>
+            <SideLeftBar />
 
-          <ContentContainer>
-            <Component {...pageProps} />
-          </ContentContainer>
+            <ContentContainer>
+              <Component {...pageProps} />
+            </ContentContainer>
 
-          <SideRightBar />
-        </LayoutContainer>
-      </LayoutInner>
-    </MainLayout>
+            <SideRightBar />
+          </LayoutContainer>
+        </LayoutInner>
+      </MainLayout>
+    </ChakraProvider>
   );
 }
 
