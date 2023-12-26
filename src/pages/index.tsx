@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { FaSearch } from '@react-icons/all-files/fa/FaSearch';
 
+import WriteModal from '@/components/modal/write/WriteModal';
 import Note from '@/components/note/Note';
 import { Notes } from '@/data/data';
 export default function Home() {
@@ -13,6 +14,8 @@ export default function Home() {
       {Notes.map((item, index: number) => (
         <Note key={index} note={item} />
       ))}
+
+      <WriteModal />
     </Contain>
   );
 }
@@ -30,6 +33,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 800px;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 20px;
