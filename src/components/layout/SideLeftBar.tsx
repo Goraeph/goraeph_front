@@ -60,6 +60,7 @@ const Contain = styled.div`
   background: #ffffff;
   h2 {
     color: #979797;
+    font-size: 2rem;
   }
 `;
 
