@@ -5,10 +5,13 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import { Users } from '@/data/data';
+import useLoginModal from '@/hooks/useLoginModal';
 
 import SpaceName from '../note/header/SpaceName';
 const SideRightBar = () => {
   const [active, setActive] = useState(false);
+
+  const { onOpen } = useLoginModal();
   return (
     <Contain>
       <User>
@@ -24,20 +27,20 @@ const SideRightBar = () => {
           </>
         ) : (
           <>
+            <button onClick={onOpen}>로그인</button>
             <button
               onClick={() => {
                 setActive(true);
               }}
             >
-              로그인
+              회원가입
             </button>
-            <button>회원가입</button>
           </>
         )}
       </User>
 
       <SubscribeSearch>
-        <input type="text" />
+        <input type="text" required />
         <span>SubscribeSearch</span>
         <FaSearch />
       </SubscribeSearch>
@@ -111,12 +114,13 @@ const SubscribeSearch = styled.div`
     letter-spacing: 0.1em;
     pointer-events: none;
     transition: 0.3s all;
-    color: #979797;
+    color: #ababab;
   }
   input:focus {
     outline: none;
   }
-  input:focus ~ span {
+  input:focus ~ span,
+  input:valid ~ span {
     transform: translateX(-5px) translateY(-25px);
     background-color: #ffffff;
     padding: 0 5px;
