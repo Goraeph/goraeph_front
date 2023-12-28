@@ -6,6 +6,8 @@ import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 
 import SideRightBar from '@/components/layout/SideRightBar';
+import LoginModal from '@/components/modal/login/LoginModal';
+import WriteModal from '@/components/modal/write/WriteModal';
 
 const SideLeftBar = dynamic(
   () => import('@/components/layout/SideLeftBar').then(mod => mod.default),
@@ -22,6 +24,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
             <ContentContainer>
               <Component {...pageProps} />
+              <WriteModal />
+              <LoginModal />
             </ContentContainer>
 
             <SideRightBar />
