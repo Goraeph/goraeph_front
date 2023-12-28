@@ -1,11 +1,16 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
+import { IoClose } from '@react-icons/all-files/io5/IoClose';
 import { TiPencil } from '@react-icons/all-files/ti/TiPencil';
+
+import useWriteModal from '@/hooks/useWriteModal';
 
 import Modals from '../Modals';
 
 const WriteModal = () => {
+  const { isOpen, onClose } = useWriteModal();
   const write = (
     <Contain>
       <div>
@@ -19,12 +24,34 @@ const WriteModal = () => {
       <Button>
         <TiPencil />
       </Button>
+      <Button onClick={onClose}>
+        <IoClose />
+      </Button>
     </Contain>
   );
-  return <Modals element={write} close={true} />;
+  return (
+    <Modals
+      element={write}
+      isOpen={isOpen}
+      onClose={onClose}
+      style={ModalContentCss}
+    />
+  );
 };
 
 export default WriteModal;
+
+const ModalContentCss = css`
+  position: absolute;
+  width: auto;
+  bottom: 0;
+  right: 250px;
+  margin: 30px;
+  background: none;
+  border: none;
+  box-shadow: none;
+`;
+
 const Contain = styled.div`
   width: 50px;
   display: flex;
