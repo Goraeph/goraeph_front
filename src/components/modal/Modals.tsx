@@ -1,38 +1,22 @@
-import {
-  Button,
-  Modal,
-  ModalContent,
-  ModalOverlay,
-  useDisclosure,
-} from '@chakra-ui/react';
-import { css } from '@emotion/react';
+import { Modal, ModalContent, ModalOverlay } from '@chakra-ui/react';
+import { css, SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HiMenu } from '@react-icons/all-files/hi/HiMenu';
-import { IoClose } from '@react-icons/all-files/io5/IoClose';
 const Modals = ({
   element,
-  close,
+  isOpen,
+  onClose,
+  style,
 }: {
   element: React.ReactElement;
-  close?: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+  style: SerializedStyles;
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Contain>
-      <Button onClick={onOpen} css={ButtonCSS}>
-        <HiMenu />
-      </Button>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent css={ModalContentCss}>
-          {element}
-          {close && (
-            <Button onClick={onClose} css={ButtonCSS}>
-              <IoClose />
-            </Button>
-          )}
-        </ModalContent>
+        <ModalContent css={style}>{element}</ModalContent>
       </Modal>
     </Contain>
   );
@@ -44,17 +28,6 @@ const Contain = styled.div`
   bottom: 0;
   right: 250px;
   margin: 30px;
-`;
-
-const ModalContentCss = css`
-  position: absolute;
-  width: auto;
-  bottom: 0;
-  right: 250px;
-  margin: 30px;
-  background: none;
-  border: none;
-  box-shadow: none;
 `;
 
 const ButtonCSS = css`
