@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
 const MainLayout = styled.div`
   height: 100vh;
   color: black;
-  background-color: #d9d9d9;
+  background-color: #eaeaea;
   font-family: IBMPlexSans;
   @font-face {
     font-family: IBMPlexSans;
