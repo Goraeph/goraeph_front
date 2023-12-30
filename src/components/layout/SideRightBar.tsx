@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { FaSearch } from '@react-icons/all-files/fa/FaSearch';
 import { MdNotificationsNone } from '@react-icons/all-files/md/MdNotificationsNone';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import { Users } from '@/data/data';
@@ -10,6 +11,7 @@ import useLoginModal from '@/hooks/useLoginModal';
 import SpaceName from '../note/header/SpaceName';
 const SideRightBar = () => {
   const [active, setActive] = useState(false);
+  const router = useRouter();
 
   const { onOpen } = useLoginModal();
   return (
@@ -27,10 +29,18 @@ const SideRightBar = () => {
           </>
         ) : (
           <>
-            <button onClick={onOpen}>로그인</button>
             <button
               onClick={() => {
-                setActive(true);
+                router.replace('', '/login', { shallow: true });
+                onOpen();
+              }}
+            >
+              로그인
+            </button>
+            <button
+              onClick={() => {
+                router.replace('', '/register', { shallow: true });
+                onOpen();
               }}
             >
               회원가입
@@ -40,9 +50,8 @@ const SideRightBar = () => {
       </User>
 
       <SubscribeSearch>
-        <input type="text" required />
-        <span>SubscribeSearch</span>
-        <FaSearch />
+        <input type="text" placeholder="SubscribeSearch" required />
+        <FaSearch color="#ffffff" />
       </SubscribeSearch>
 
       <Contents>
@@ -68,7 +77,7 @@ const SideRightBar = () => {
 
 export default SideRightBar;
 const Contain = styled.div`
-  width: 250px;
+  width: 235px;
   min-width: 2rem;
   padding: 20px;
   background: #ffffff;
@@ -99,23 +108,19 @@ const SubscribeSearch = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 2px solid #979797;
+  background-color: #d9d9d9;
   input {
     padding: 5px;
     width: 100%;
     border: none;
     font-size: 1em;
+    background-color: #d9d9d9;
+    color: #ffffff;
   }
-  span {
-    position: absolute;
-    left: 0;
-    margin-left: 15px;
-    font-size: 0.5em;
-    letter-spacing: 0.1em;
-    pointer-events: none;
-    transition: 0.3s all;
-    color: #ababab;
+  input::-webkit-input-placeholder {
+    color: #ffffff;
   }
+
   input:focus {
     outline: none;
   }

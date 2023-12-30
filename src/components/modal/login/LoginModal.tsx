@@ -2,8 +2,8 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { FaApple } from '@react-icons/all-files/fa/FaApple';
 import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 import useLoginModal from '@/hooks/useLoginModal';
 
@@ -14,6 +14,23 @@ const LoginModal = () => {
   const [register, setRegister] = useState(true);
   const [authentication, setAuthentication] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    const handleUrlChange = (url: string) => {
+      if (url === '/register') {
+        setRegister(false);
+      } else if (url === '/login') {
+        setRegister(true);
+      }
+    };
+
+    const onUrlChange = (url: string) => handleUrlChange(url);
+    router.events.on('routeChangeComplete', onUrlChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', onUrlChange);
+    };
+  }, [router]);
 
   const LoginForm = (
     <Contain>
@@ -33,15 +50,17 @@ const LoginModal = () => {
 
       <Section>
         <Input>
-          <input type="text" required />
-          <InputTitle>
-            {register ? '아이디' : authentication ? '이메일' : '인증번호'}
-          </InputTitle>
+          <input
+            type="text"
+            required
+            placeholder={
+              register ? '아이디' : authentication ? '이메일' : '인증번호'
+            }
+          />
         </Input>
         {register && (
           <Input>
-            <input type="text" required />
-            <InputTitle>비밀번호</InputTitle>
+            <input type="text" required placeholder="비밀번호" />
           </Input>
         )}
         <Login
@@ -62,8 +81,10 @@ const LoginModal = () => {
             onClick={() => {
               if (register) {
                 setRegister(false);
+                router.replace('/', '/register', { shallow: true });
               } else {
                 setRegister(true);
+                router.replace('/', '/login', { shallow: true });
               }
             }}
           >
@@ -142,14 +163,7 @@ const Login = styled.div`
   background-color: #d9d9d9;
   font-weight: bold;
 `;
-const InputTitle = styled.span`
-  position: absolute;
-  left: 0;
-  transition: 0.3s all;
-  padding: 10px 15px;
-  pointer-events: none;
-  color: #ababab;
-`;
+
 const Board = styled.div`
   width: 100%;
   border-bottom: 1px solid #d3d3d3;
