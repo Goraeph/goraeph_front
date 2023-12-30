@@ -8,7 +8,7 @@ import SpaceName from './header/SpaceName';
 const Header = ({ title, date }: { title: string; date: string }) => {
   return (
     <Content>
-      <Image src={Users[0].profileImage} alt="이미지" width={80} height={80} />
+      <Image src={Users[0].profileImage} alt="이미지" width={90} height={90} />
       <Section>
         <span>{title}</span>
         <span>
@@ -40,10 +40,11 @@ const Section = styled.div`
   margin-left: 20px;
 
   span:nth-child(1) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   span:nth-child(2) {
     color: #d9d9d9;
+    font-size: 1.125rem;
   }
   span text {
     font-weight: bold;
