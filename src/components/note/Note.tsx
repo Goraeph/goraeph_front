@@ -30,9 +30,9 @@ export default Note;
 const Contain = styled.div`
   background: white;
   cursor: pointer;
+  margin: auto;
   margin-top: 20px;
-  width: 100%;
-  max-width: 800px;
+  max-width: 910px;
   border-radius: 20px;
   padding: 30px;
   box-shadow:
@@ -41,13 +41,14 @@ const Contain = styled.div`
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   &:hover {
     box-shadow:
-      0 14px 28px rgba(0, 0, 0, 0.25),
-      0 10px 10px hsla(0, 0%, 0%, 0.22);
+      0 3px 5px rgba(0, 0, 0, 0.25),
+      0 3px 10px hsla(0, 0%, 0%, 0.22);
   }
 `;
 const Content = styled.div`
   margin-top: 20px;
   img {
+    width: 850px;
     height: auto !important;
     position: relative !important;
   }
