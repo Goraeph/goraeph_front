@@ -1,6 +1,9 @@
 import { Modal, ModalContent, ModalOverlay } from '@chakra-ui/react';
-import { css, SerializedStyles } from '@emotion/react';
-import styled from '@emotion/styled';
+import { SerializedStyles } from '@emotion/react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import useLoginModal from '@/hooks/useLoginModal';
 const Modals = ({
   element,
   isOpen,
@@ -12,29 +15,31 @@ const Modals = ({
   onClose: () => void;
   style: SerializedStyles;
 }) => {
+  const router = useRouter();
+  const { onOpen } = useLoginModal();
+
+  useEffect(() => {
+    // 새로 고침 하면 특정 모달 다시 페인팅
+    if (window.location.pathname === '/login') {
+      router.replace('/', '/login', { shallow: true });
+      onOpen();
+    } else if (window.location.pathname === '/register') {
+      router.replace('/', '/register', { shallow: true });
+      onOpen();
+    }
+  }, []);
+
   return (
-    <Contain>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent css={style}>{element}</ModalContent>
-      </Modal>
-    </Contain>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => {
+        onClose();
+        router.replace('', undefined, { shallow: true });
+      }}
+    >
+      <ModalOverlay />
+      <ModalContent css={style}>{element}</ModalContent>
+    </Modal>
   );
 };
 export default Modals;
-
-const Contain = styled.div`
-  position: fixed;
-  bottom: 0;
-  right: 250px;
-  margin: 30px;
-`;
-
-const ButtonCSS = css`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 15px;
-`;
