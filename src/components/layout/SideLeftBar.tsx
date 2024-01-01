@@ -79,6 +79,7 @@ const Contain = styled.div`
     color: #979797;
     font-size: 2rem;
   }
+  overflow: hidden;
 `;
 
 const ContentsTitle = styled.span`
@@ -156,7 +157,7 @@ const SuggestedSpace = styled.div`
 `;
 
 const Setting = styled.div`
-  margin-top: 30px;
+  margin-top: 10px;
   gap: 5px;
   color: #979797;
   display: flex;
