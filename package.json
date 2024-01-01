@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "husky install",
+    "postinstall": "husky install && patch-package",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -31,10 +31,12 @@
     "framer-motion": "^10.16.4",
     "next": "13.2.0",
     "next-auth": "^4.24.4",
+    "patch-package": "^8.0.0",
     "react": "^18",
     "react-dom": "^18",
     "react-file-drop": "^3.1.6",
     "react-force-graph-2d": "^1.25.2",
+    "vditor": "^3.9.8",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
