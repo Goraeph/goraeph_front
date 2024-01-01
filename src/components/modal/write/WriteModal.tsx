@@ -4,6 +4,7 @@ import { IoIosArrowDown } from '@react-icons/all-files/io/IoIosArrowDown';
 import { IoIosArrowUp } from '@react-icons/all-files/io/IoIosArrowUp';
 import { IoClose } from '@react-icons/all-files/io5/IoClose';
 import { TiPencil } from '@react-icons/all-files/ti/TiPencil';
+import { useRouter } from 'next/router';
 
 import useWriteModal from '@/hooks/useWriteModal';
 
@@ -11,6 +12,7 @@ import Modals from '../Modals';
 
 const WriteModal = () => {
   const { isOpen, onClose } = useWriteModal();
+  const router = useRouter();
   const write = (
     <Contain>
       <div>
@@ -21,7 +23,11 @@ const WriteModal = () => {
           <IoIosArrowDown />
         </Button>
       </div>
-      <Button>
+      <Button
+        onClick={() => {
+          router.push('/write');
+        }}
+      >
         <TiPencil />
       </Button>
       <Button onClick={onClose}>
