@@ -13,7 +13,6 @@ const Write = () => {
 
   useEffect(() => {
     new Vditor('vditor', {
-      height: '80vh',
       cache: {
         enable: false,
       },
@@ -35,39 +34,40 @@ const Write = () => {
   };
 
   return (
-    <Contain>
-      <InputContent>
-        <textarea
-          name="title"
-          placeholder="제목을 입력해주세요."
-          rows={1}
-          ref={ref_title}
-          onChange={() => {
-            if (ref_title.current) handleResizeHeight(ref_title.current);
-          }}
-        ></textarea>
-        <textarea
-          name="tag"
-          placeholder="태그입력"
-          rows={1}
-          ref={ref_tag}
-          onChange={() => {
-            if (ref_tag.current) handleResizeHeight(ref_tag.current);
-          }}
-        ></textarea>
-        <textarea
-          name="summary"
-          placeholder="한줄요약"
-          rows={1}
-          ref={ref_summary}
-          onChange={() => {
-            if (ref_summary.current) handleResizeHeight(ref_summary.current);
-          }}
-        ></textarea>
-      </InputContent>
-      <div id="vditor"></div>
-
-      <Content>
+    <>
+      <Contain>
+        <InputContent>
+          <textarea
+            name="title"
+            placeholder="제목을 입력해주세요."
+            rows={1}
+            ref={ref_title}
+            onChange={() => {
+              if (ref_title.current) handleResizeHeight(ref_title.current);
+            }}
+          ></textarea>
+          <textarea
+            name="tag"
+            placeholder="태그입력"
+            rows={1}
+            ref={ref_tag}
+            onChange={() => {
+              if (ref_tag.current) handleResizeHeight(ref_tag.current);
+            }}
+          ></textarea>
+          <textarea
+            name="summary"
+            placeholder="한줄요약"
+            rows={1}
+            ref={ref_summary}
+            onChange={() => {
+              if (ref_summary.current) handleResizeHeight(ref_summary.current);
+            }}
+          ></textarea>
+        </InputContent>
+        <div id="vditor"></div>
+      </Contain>
+      <ButtonCotain>
         <ButtonContent>
           <Button>나가기</Button>
         </ButtonContent>
@@ -75,14 +75,16 @@ const Write = () => {
           <Button>임시저장</Button>
           <Button>게시하기</Button>
         </ButtonContent>
-      </Content>
-    </Contain>
+      </ButtonCotain>
+    </>
   );
 };
 export default Write;
 const Contain = styled.div`
-  padding: 20px;
+  /* padding: 20px; */
   background-color: #f8f8f8;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
 `;
 
 const InputContent = styled.div`
@@ -90,7 +92,7 @@ const InputContent = styled.div`
   flex-direction: column;
 
   textarea {
-    padding: 15px;
+    padding: 20px 30px;
     background: none;
     border: none;
     border-bottom: 2px solid #efefef;
@@ -107,21 +109,23 @@ const InputContent = styled.div`
   }
 `;
 
-const Content = styled.div`
+const ButtonCotain = styled.div`
+  background-color: #f8f8f8;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  height: 4rem;
 `;
-
+const ButtonContent = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 const Button = styled.div`
   background-color: #b5b5b5;
   color: #ffffff;
   border-radius: 20px;
   padding: 15px;
   cursor: pointer;
-`;
-const ButtonContent = styled.div`
-  display: flex;
-  gap: 10px;
 `;
