@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import { useEffect, useRef } from 'react';
 import Vditor from 'vditor';
 
+import { colors } from '@/styles/emotion/color';
+import { button } from '@/styles/emotion/global';
+
 const Write = () => {
   // const [vditorText, setVditorText] = useState('');
 
@@ -81,8 +84,7 @@ const Write = () => {
 };
 export default Write;
 const Contain = styled.div`
-  /* padding: 20px; */
-  background-color: #f8f8f8;
+  background-color: ${colors.background_write};
   height: calc(100vh - 4rem);
   overflow-y: auto;
 `;
@@ -95,7 +97,7 @@ const InputContent = styled.div`
     padding: 20px 30px;
     background: none;
     border: none;
-    border-bottom: 2px solid #efefef;
+    border-bottom: 2px solid ${colors.gray_250};
     font-size: 1.5rem;
     overflow: hidden;
     min-height: 1.5rem;
@@ -110,7 +112,7 @@ const InputContent = styled.div`
 `;
 
 const ButtonCotain = styled.div`
-  background-color: #f8f8f8;
+  background-color: ${colors.background_write};
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -123,9 +125,5 @@ const ButtonContent = styled.div`
   gap: 10px;
 `;
 const Button = styled.div`
-  background-color: #b5b5b5;
-  color: #ffffff;
-  border-radius: 20px;
-  padding: 15px;
-  cursor: pointer;
+  ${button}
 `;

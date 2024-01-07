@@ -3,13 +3,18 @@ import styled from '@emotion/styled';
 import { IoSettingsSharp } from '@react-icons/all-files/io5/IoSettingsSharp';
 import { MdKeyboardArrowDown } from '@react-icons/all-files/md/MdKeyboardArrowDown';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
+
+import { colors } from '@/styles/emotion/color';
+import { scrollbar } from '@/styles/emotion/scrollbar';
 
 import { SuggestedSpaces, Tags } from '../../data/data';
 import NoteTitle from './SideLeftBar/NoteTitle';
 
 const SideLeftBar = () => {
   const [toggle, setToggle] = useState([0]);
+  const router = useRouter();
 
   const handleNoteItem = (id: number) => {
     if (toggle.some(ids => ids === id)) {
@@ -23,7 +28,13 @@ const SideLeftBar = () => {
 
   return (
     <Contain>
-      <h2>🐋 Goraeph</h2>
+      <h2
+        onClick={() => {
+          router.push('/');
+        }}
+      >
+        🐋 Goraeph
+      </h2>
       <Contents>
         <ContentsTitle>Top Tags</ContentsTitle>
         {Tags.map((item, index: number) => (
@@ -71,20 +82,22 @@ const SideLeftBar = () => {
 export default SideLeftBar;
 
 const Contain = styled.div`
+  grid-column: span 1;
   width: 235px;
   min-width: 2rem;
   padding: 20px 0 0 15px;
-  background: #ffffff;
+  background: ${colors.white};
   h2 {
-    color: #979797;
+    color: ${colors.gray_350};
     font-size: 2rem;
+    cursor: pointer;
   }
   overflow: hidden;
 `;
 
 const ContentsTitle = styled.span`
   font-size: 1.25rem;
-  color: #979797;
+  color: ${colors.gray_350};
   display: block;
   margin-top: 50px;
 `;
@@ -93,17 +106,7 @@ const Contents = styled.div`
   position: relative;
   overflow-y: scroll;
   height: 85vh;
-  &::-webkit-scrollbar {
-    background-color: #f1f1f1 !important;
-    width: 8px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #888 !important;
-    border-radius: 5px !important;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #555 !important;
-  }
+  ${scrollbar}
 `;
 
 const TagColorCss = (props: { color?: string; display: boolean }) => css`
@@ -133,7 +136,7 @@ const TopTag = styled.p`
   span {
     padding: 8px;
     margin-left: 10px;
-    border-left: 2px solid #cccccc;
+    border-left: 2px solid ${colors.gray_350};
     justify-content: start;
     align-items: center;
   }
@@ -159,7 +162,7 @@ const SuggestedSpace = styled.div`
 const Setting = styled.div`
   margin-top: 10px;
   gap: 5px;
-  color: #979797;
+  color: ${colors.gray_350};
   display: flex;
   align-items: center;
 `;

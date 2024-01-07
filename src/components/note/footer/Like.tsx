@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 import { FaHeart } from '@react-icons/all-files/fa/FaHeart';
 
 import { Likes } from '@/data/data';
+import { colors } from '@/styles/emotion/color';
 
 const Like = ({ id }: { id: string }) => {
   return (
     <Contain>
-      <FaHeart color="#FF8989" />
+      <FaHeart color={colors.pink} />
       &ensp;{Likes.length}&nbsp;likes
     </Contain>
   );

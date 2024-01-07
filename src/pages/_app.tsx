@@ -8,6 +8,8 @@ import dynamic from 'next/dynamic';
 import SideRightBar from '@/components/layout/SideRightBar';
 import LoginModal from '@/components/modal/login/LoginModal';
 import WriteModal from '@/components/modal/write/WriteModal';
+import { colors } from '@/styles/emotion/color';
+import { scrollbar } from '@/styles/emotion/scrollbar';
 
 const SideLeftBar = dynamic(
   () => import('@/components/layout/SideLeftBar').then(mod => mod.default),
@@ -39,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
 const MainLayout = styled.div`
   height: 100vh;
   color: black;
-  background-color: #eaeaea;
+  background-color: ${colors.background_global};
   font-family: IBMPlexSans;
   @font-face {
     font-family: IBMPlexSans;
@@ -63,15 +65,5 @@ const ContentContainer = styled.div`
   min-width: 15rem;
   overflow-y: auto;
 
-  &::-webkit-scrollbar {
-    background-color: #f1f1f1 !important;
-    width: 8px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #888 !important;
-    border-radius: 5px !important;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #555 !important;
-  }
+  ${scrollbar}
 `;

@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Note from '@/components/note/Note';
 import { MainSpaces, Notes } from '@/data/data';
 import useLoginModal from '@/hooks/useWriteModal';
+import { colors } from '@/styles/emotion/color';
+import { shadow } from '@/styles/emotion/shodow';
 
 import BannerImage from '../../public/image/default_banner.png';
 
@@ -78,7 +80,7 @@ const Header = styled.div`
   position: sticky;
   top: -1px;
   width: 100%;
-  background-color: #eaeaea;
+  background-color: ${colors.background_global};
   z-index: 10;
   padding: 20px 0 10px 0;
   display: flex;
@@ -87,8 +89,8 @@ const Header = styled.div`
   align-items: center;
 `;
 const MainSpace = styled.div`
-  background-color: #ffffff;
-  color: #b6b6b6;
+  background-color: ${colors.white};
+  color: ${colors.gray_50};
   border-radius: 20px;
   width: 100%;
   display: flex;
@@ -117,9 +119,9 @@ const Menu = styled.div`
   max-width: 910px;
   span {
     border-radius: 10px;
-    background-color: #d9d9d9;
+    background-color: ${colors.gray_150};
     padding: 5px 40px;
-    color: #ffffff;
+    color: ${colors.white};
     font-size: 1.25rem;
     gap: 10px;
   }
@@ -148,4 +150,5 @@ const Button = styled.div`
   font-weight: bold;
   font-size: 1.5rem;
   cursor: pointer;
+  ${shadow}
 `;

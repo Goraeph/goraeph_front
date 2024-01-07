@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 import { Users } from '@/data/data';
+import { colors } from '@/styles/emotion/color';
 
 import SpaceName from './header/SpaceName';
 
@@ -43,11 +44,11 @@ const Section = styled.div`
     font-size: 1.8rem;
   }
   span:nth-child(2) {
-    color: #d9d9d9;
+    color: ${colors.gray_150};
     font-size: 1.125rem;
   }
   span text {
     font-weight: bold;
-    color: #000000;
+    color: ${colors.black};
   }
 `;

@@ -2,10 +2,10 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { FaApple } from '@react-icons/all-files/fa/FaApple';
 import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import useLoginModal from '@/hooks/useLoginModal';
+import { colors } from '@/styles/emotion/color';
 
 import Modals from '../Modals';
 
@@ -13,24 +13,10 @@ const LoginModal = () => {
   const { isOpen, onClose } = useLoginModal();
   const [register, setRegister] = useState(true);
   const [authentication, setAuthentication] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
-    const handleUrlChange = (url: string) => {
-      if (url === '/register') {
-        setRegister(false);
-      } else if (url === '/login') {
-        setRegister(true);
-      }
-    };
-
-    const onUrlChange = (url: string) => handleUrlChange(url);
-    router.events.on('routeChangeComplete', onUrlChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', onUrlChange);
-    };
-  }, [router]);
+    if (!register) setRegister(true);
+  }, [isOpen]);
 
   const LoginForm = (
     <Contain>
@@ -81,10 +67,8 @@ const LoginModal = () => {
             onClick={() => {
               if (register) {
                 setRegister(false);
-                router.replace('/', '/register', { shallow: true });
               } else {
                 setRegister(true);
-                router.replace('/', '/login', { shallow: true });
               }
             }}
           >
@@ -110,7 +94,7 @@ const ModalContentCss = css`
   margin: auto;
 `;
 const Contain = styled.div`
-  color: black;
+  color: ${colors.black};
   padding: 30px 50px;
   text-align: center;
   h1 {
@@ -144,7 +128,7 @@ const Section = styled.div`
     transform: translateX(10px) translateY(-20px);
     padding: 0 5px;
     font-size: 0.75rem;
-    background-color: white;
+    background-color: ${colors.white};
   }
 `;
 const Input = styled.div`
@@ -160,7 +144,7 @@ const SnsLogin = styled.div`
 `;
 
 const Login = styled.div`
-  background-color: #d9d9d9;
+  background-color: ${colors.gray_150};
   font-weight: bold;
 `;
 
@@ -172,9 +156,9 @@ const Register = styled.span`
   border: none;
   background: none;
   font-size: 0.75rem;
-  color: #7d7d7d;
+  color: ${colors.gray_300};
   span {
-    color: #000000;
+    color: ${colors.black};
     font-weight: bold;
     cursor: pointer;
   }

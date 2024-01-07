@@ -2,16 +2,15 @@ import styled from '@emotion/styled';
 import { FaSearch } from '@react-icons/all-files/fa/FaSearch';
 import { MdNotificationsNone } from '@react-icons/all-files/md/MdNotificationsNone';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import { Users } from '@/data/data';
 import useLoginModal from '@/hooks/useLoginModal';
+import { colors } from '@/styles/emotion/color';
 
 import SpaceName from '../note/header/SpaceName';
 const SideRightBar = () => {
   const [active, setActive] = useState(false);
-  const router = useRouter();
 
   const { onOpen } = useLoginModal();
   return (
@@ -31,7 +30,6 @@ const SideRightBar = () => {
           <>
             <button
               onClick={() => {
-                router.replace('', '/login', { shallow: true });
                 onOpen();
               }}
             >
@@ -39,7 +37,6 @@ const SideRightBar = () => {
             </button>
             <button
               onClick={() => {
-                router.replace('', '/register', { shallow: true });
                 onOpen();
               }}
             >
@@ -77,10 +74,11 @@ const SideRightBar = () => {
 
 export default SideRightBar;
 const Contain = styled.div`
+  grid-column: span 1;
   width: 235px;
   min-width: 2rem;
   padding: 20px;
-  background: #ffffff;
+  background: ${colors.white};
 `;
 const User = styled.div`
   display: flex;
@@ -108,35 +106,29 @@ const SubscribeSearch = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: #d9d9d9;
+  background-color: ${colors.gray_150};
   input {
     padding: 5px;
     width: 100%;
     border: none;
     font-size: 1em;
-    background-color: #d9d9d9;
-    color: #ffffff;
+    background-color: ${colors.gray_150};
+    color: ${colors.white};
   }
   input::-webkit-input-placeholder {
-    color: #ffffff;
+    color: ${colors.white};
   }
 
   input:focus {
     outline: none;
-  }
-  input:focus ~ span,
-  input:valid ~ span {
-    transform: translateX(-5px) translateY(-25px);
-    background-color: #ffffff;
-    padding: 0 5px;
   }
 `;
 const Contents = styled.div`
   margin-top: 50px;
 `;
 const ContentsTitle = styled.span`
-  font-size: 1rem;
-  color: #979797;
+  font-size: 1.25rem;
+  color: ${colors.gray_350};
   margin-top: 30px;
 `;
 const Section = styled.div`
@@ -159,7 +151,7 @@ const Section = styled.div`
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #53fd04;
+    background-color: ${colors.green};
     border-radius: 50%;
     left: 30px;
     bottom: 10px;
