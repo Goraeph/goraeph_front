@@ -3,3 +3,45 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
+ul,
+li,
+ol {
+  list-style: none;
+}
+
+/* 마크다운 커스텀 스타일 */
+#vditor {
+  border: none !important;
+  border-bottom-right-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  background-color: #f8f8f8 !important;
+}
+.vditor-toolbar {
+  background: none !important;
+  padding: 10px 0 !important;
+  width: 100% !important;
+  margin: auto !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.vditor-toolbar__item .vditor-tooltipped {
+  width: 28px !important;
+  height: 35px !important;
+  scale: 1;
+}
+.vditor-toolbar__item button svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+.vditor-reset {
+  padding: 20px 30px !important;
+  background: none !important;
+}
+.vditor-reset::before {
+  font-size: 1.5rem;
+}
