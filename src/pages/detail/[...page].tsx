@@ -5,10 +5,11 @@ import Like from '@/components/note/footer/Like';
 import { Notes } from '@/data/data';
 import { colors } from '@/styles/emotion/color';
 import { button } from '@/styles/emotion/global';
+import User from '@/components/User';
 
 const Detail = () => {
   return (
-    <>
+    <DetailProvider>
       <Contain>
         <Title>대왕고래</Title>
         <UserInfo>
@@ -73,29 +74,49 @@ const Detail = () => {
             눈은 농구공보다 크다
           </div>
         </Content>
-        <Comment>
+        <CommentProvider>
           <span>0개의 댓글</span>
-          <input type="text" />
-          <div>댓글1</div>
-          <div>댓글2</div>
-          <div>댓글3</div>
-        </Comment>
+          <CommentPost>
+            <textarea placeholder="댓글을 달아주세요." rows={1} />
+            <button>작성하기</button>
+          </CommentPost>
+
+          <Comment>
+            <User />
+            <p>댓글3</p>
+          </Comment>
+          <Comment>
+            <User />
+            <p>댓글3</p>
+          </Comment>
+          <Comment>
+            <User />
+            <p>댓글3</p>
+          </Comment>
+        </CommentProvider>
       </Contain>
       <ButtonCotain>
         <Like id="" />
         <button>구독하기</button>
       </ButtonCotain>
-    </>
+    </DetailProvider>
   );
 };
 
 export default Detail;
+const DetailProvider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Contain = styled.div`
   width: 100%;
   height: calc(100vh - 4rem);
   padding: 20px;
   overflow: auto;
+  max-width: 1024px;
 `;
 
 const Title = styled.h1`
@@ -124,6 +145,7 @@ const Tag = styled.ul`
     background-color: ${colors.gray_100};
     color: ${colors.white};
     font-size: 1.125rem;
+    list-style: none;
   }
 `;
 const Content = styled.div`
@@ -136,25 +158,50 @@ const Content = styled.div`
   }
 `;
 
-const Comment = styled.div`
+const CommentProvider = styled.div`
   border-top: 1px solid ${colors.gray_350};
   padding: 10px 0;
-  input {
+  textarea {
     width: 100%;
     padding: 10px;
+    resize: none;
+    height: 3rem;
+  }
+  textarea:focus {
+    outline: none;
   }
   span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+`;
+
+const CommentPost = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin-top: 20px;
+  button {
+    margin-top: 20px;
+    ${button}
+  }
+`;
+const Comment = styled.div`
+  padding: 10px;
+  border-bottom: 1px solid ${colors.gray_350};
+  p {
+    font-size: 1.125rem;
   }
 `;
 const ButtonCotain = styled.div`
-  background-color: #f8f8f8;
+  /* background-color: #f8fafc; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 4rem;
+  width: 100%;
   button {
     ${button}
   }
