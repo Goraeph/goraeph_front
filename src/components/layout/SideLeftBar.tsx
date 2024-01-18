@@ -84,7 +84,7 @@ export default SideLeftBar;
 const Contain = styled.div`
   grid-column: span 1;
   width: 235px;
-  min-width: 2rem;
+  height: 100vh;
   padding: 20px 0 0 15px;
   background: ${colors.white};
   overflow: hidden;
@@ -94,7 +94,9 @@ const Contain = styled.div`
     cursor: pointer;
   }
   @media screen and (max-width: 1024px) {
-    display: none;
+    position: fixed;
+    left: -235px;
+    top: 0;
   }
 `;
 

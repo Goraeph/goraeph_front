@@ -78,7 +78,7 @@ const Banner = styled.div`
 
 const Header = styled.div`
   position: sticky;
-  top: -1px;
+  top: -11px;
   width: 100%;
   background-color: ${colors.background_global};
   z-index: 10;
@@ -113,20 +113,21 @@ const MainSpace = styled.div`
 const Menu = styled.div`
   margin-top: 20px;
   width: 100%;
+  max-width: 910px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 910px;
+
   span {
     border-radius: 10px;
     background-color: ${colors.gray_150};
-    padding: 5px 40px;
+    padding: 5px 20px;
     color: ${colors.white};
     font-size: 1.25rem;
     gap: 10px;
   }
   div:nth-child(1) span {
-    margin-right: 30px;
+    margin-right: 10px;
   }
   div:nth-child(2) span {
     display: flex;

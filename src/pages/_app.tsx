@@ -40,7 +40,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
 const MainLayout = styled.div`
   height: 100vh;
-  color: black;
   background-color: ${colors.background_global};
   font-family: IBMPlexSans;
   @font-face {
@@ -54,20 +53,18 @@ const LayoutInner = styled.div`
   margin: 0 auto;
 `;
 const LayoutContainer = styled.div`
-  position: relative;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   height: 100vh;
 `;
 const ContentContainer = styled.div`
-  grid-column: span 8;
+  grid-column: span 6;
   width: 100%;
-  min-width: 15rem;
+  height: 100vh;
   overflow-y: auto;
   padding: 10px;
-
   ${scrollbar}
-  @media screen and (min-width: 1024px) {
-    grid-column: span 6;
+  @media screen and (max-width: 1024px) {
+    grid-column: span 8;
   }
 `;

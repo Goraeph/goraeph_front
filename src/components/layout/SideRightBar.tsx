@@ -73,14 +73,16 @@ const SideRightBar = () => {
 };
 
 export default SideRightBar;
+
 const Contain = styled.div`
-  grid-column: span 1;
   width: 235px;
-  min-width: 2rem;
+  height: 100vh;
   padding: 20px;
   background: ${colors.white};
   @media screen and (max-width: 1024px) {
-    display: none;
+    position: fixed;
+    right: -235px;
+    top: 0;
   }
 `;
 const User = styled.div`
