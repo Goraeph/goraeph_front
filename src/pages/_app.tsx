@@ -60,10 +60,14 @@ const LayoutContainer = styled.div`
   height: 100vh;
 `;
 const ContentContainer = styled.div`
-  grid-column: span 6;
+  grid-column: span 8;
   width: 100%;
   min-width: 15rem;
   overflow-y: auto;
+  padding: 10px;
 
   ${scrollbar}
+  @media screen and (min-width: 1024px) {
+    grid-column: span 6;
+  }
 `;
