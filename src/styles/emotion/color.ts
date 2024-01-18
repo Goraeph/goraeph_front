@@ -1,5 +1,6 @@
 export const colors = {
-  background_global: '#eaeaea',
+  background_global_dev: '#eaeaea',
+  background_global: '#f8fafc',
   background_write: '#f8f8f8',
 
   white: '#FFFFFF',
@@ -15,6 +16,7 @@ export const colors = {
   green: '#53fd04',
 
   black: '#000000',
+  black_100: '#282828',
 
   pink: '#FF8989',
 };
