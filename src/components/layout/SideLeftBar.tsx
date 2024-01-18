@@ -87,12 +87,15 @@ const Contain = styled.div`
   min-width: 2rem;
   padding: 20px 0 0 15px;
   background: ${colors.white};
+  overflow: hidden;
   h2 {
     color: ${colors.gray_350};
     font-size: 2rem;
     cursor: pointer;
   }
-  overflow: hidden;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const ContentsTitle = styled.span`

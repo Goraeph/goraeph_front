@@ -79,6 +79,9 @@ const Contain = styled.div`
   min-width: 2rem;
   padding: 20px;
   background: ${colors.white};
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 const User = styled.div`
   display: flex;
